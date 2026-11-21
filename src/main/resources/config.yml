@@ -1,0 +1,11 @@
+reloaded: "<green>Успешно перезагружено!"
+no_permission: "<red>У вас нет прав."
+weather_set: "<green>Погода установлена на <weather>"
+weather_reset: "<green>Погода сброшена!"
+menu:
+  title: "<dark_gray>Выбор погоды"
+  clear: "<gray>Сбросить"
+weather:
+  clear: "<white>Ясно"
+  rain: "<aqua>Дождь"
+  storm: "<gray>Гроза"
