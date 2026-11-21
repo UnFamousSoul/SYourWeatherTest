@@ -1,6 +1,6 @@
 name: SYourWeatherTest
 version: '${version}'
-main: com.unfamoussoul.sYourWeatherTest.SYourWeatherTest
+main: com.unfamoussoul.syourweathertest.SYourWeatherTest
 api-version: '26.3'
 authors: [ UnFamousSoul ]
 website: https://github.com/UnFamousSoul

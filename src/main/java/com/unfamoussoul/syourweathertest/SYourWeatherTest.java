@@ -1,4 +1,4 @@
-package com.unfamoussoul.sYourWeatherTest;
+package com.unfamoussoul.syourweathertest;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
