@@ -1,6 +1,6 @@
 name: SYourWeatherTest
-version: '1.0'
+version: '${version}'
 main: com.unfamoussoul.sYourWeatherTest.SYourWeatherTest
-api-version: '1.21'
+api-version: '26.3'
 authors: [ UnFamousSoul ]
 website: https://github.com/UnFamousSoul
