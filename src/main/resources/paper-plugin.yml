@@ -4,3 +4,4 @@ main: com.unfamoussoul.syourweathertest.SYourWeatherTest
 api-version: '26.3'
 authors: [ UnFamousSoul ]
 website: https://github.com/UnFamousSoul
+folia-supported: true
