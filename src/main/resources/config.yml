@@ -8,4 +8,3 @@ menu:
 weather:
   clear: "<white>Ясно"
   rain: "<aqua>Дождь"
-  storm: "<gray>Гроза"

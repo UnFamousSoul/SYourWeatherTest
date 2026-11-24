@@ -22,7 +22,6 @@ public final class Config {
 
     public final Component weatherClear;
     public final Component weatherRain;
-    public final Component weatherStorm;
 
     public final Component menuClear;
 
@@ -45,7 +44,6 @@ public final class Config {
 
         weatherClear = mm(cfg.getString("weather.clear", ""));
         weatherRain = mm(cfg.getString("weather.rain", ""));
-        weatherStorm = mm(cfg.getString("weather.storm", ""));
     }
 
     public @NotNull Component mm(String text, TagResolver... placeholders) {
