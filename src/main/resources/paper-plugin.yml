@@ -5,3 +5,9 @@ api-version: '26.3'
 authors: [ UnFamousSoul ]
 website: https://github.com/UnFamousSoul
 folia-supported: true
+
+permissions:
+  syourweathertest.reload:
+    default: op
+  syourweathertest.use:
+    default: op

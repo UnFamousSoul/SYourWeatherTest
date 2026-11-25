@@ -23,7 +23,11 @@ public final class Config {
         usage = mm("""
                         SYourWeatherTest %s - UnFamousSoul:
                         
-                        """.formatted(version));
+                        /syourweathertest reload - перезагрузить плагин
+                        /syourweathertest weather <погода> - поставить погоду
+                        /syourweathertest clear - очистить индивидуальную погоду
+                        """.formatted(version)
+        );
 
         reloaded = mm(cfg.getString("reloaded", ""));
         weatherSet = cfg.getString("weather_set", "");
