@@ -13,37 +13,22 @@ public final class Config {
     public final Component usage;
 
     public final Component reloaded;
-    public final Component noPermission;
-
     public final String weatherSet;
-    public final String weatherReset;
-
-    public final Component menuTitle;
-
-    public final Component weatherClear;
-    public final Component weatherRain;
-
-    public final Component menuClear;
+    public final Component weatherReset;
+    public final String errorInvalidWeather;
 
     public Config(@NotNull ConfigHandler handler, String version) {
         FileConfiguration cfg = handler.get();
 
         usage = mm("""
-                        SYourWeatherTest %s by UnFamousSoul:
+                        SYourWeatherTest %s - UnFamousSoul:
                         
                         """.formatted(version));
 
         reloaded = mm(cfg.getString("reloaded", ""));
-        noPermission = mm(cfg.getString("no_permission", ""));
-
         weatherSet = cfg.getString("weather_set", "");
-        weatherReset = cfg.getString("weather_reset", "");
-
-        menuTitle = mm(cfg.getString("menu.title", ""));
-        menuClear = mm(cfg.getString("menu.clear", ""));
-
-        weatherClear = mm(cfg.getString("weather.clear", ""));
-        weatherRain = mm(cfg.getString("weather.rain", ""));
+        weatherReset = mm(cfg.getString("weather_reset", ""));
+        errorInvalidWeather = cfg.getString("error_invalid_weather", "");
     }
 
     public @NotNull Component mm(String text, TagResolver... placeholders) {
