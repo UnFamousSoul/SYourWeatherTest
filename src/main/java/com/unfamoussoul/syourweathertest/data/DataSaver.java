@@ -19,7 +19,7 @@ public class DataSaver {
     public WeatherType get(@NotNull Player player) {
         Integer value = player.getPersistentDataContainer().get(weatherKey, PersistentDataType.INTEGER);
         if (value == null) {
-            return WeatherType.CLEAR;
+            return null;
         }
         return WeatherType.values()[value];
     }
@@ -30,6 +30,14 @@ public class DataSaver {
             pdc.remove(weatherKey);
         } else {
             pdc.set(weatherKey, PersistentDataType.INTEGER, option.ordinal());
+        }
+    }
+
+    public void apply(@NotNull Player player, WeatherType type) {
+        if (type == null) {
+            player.resetPlayerWeather();
+        } else {
+            player.setPlayerWeather(type);
         }
     }
 

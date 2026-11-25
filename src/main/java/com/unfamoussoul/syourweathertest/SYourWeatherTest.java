@@ -3,6 +3,8 @@ package com.unfamoussoul.syourweathertest;
 import com.unfamoussoul.syourweathertest.config.Config;
 import com.unfamoussoul.syourweathertest.config.ConfigHandler;
 import com.unfamoussoul.syourweathertest.data.DataSaver;
+import com.unfamoussoul.syourweathertest.listener.WeatherListener;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")
@@ -26,5 +28,9 @@ public final class SYourWeatherTest extends JavaPlugin {
 
     public Config getCfg() {
         return cfg;
+    }
+
+    public DataSaver getDataSaver() {
+        return ds;
     }
 }
