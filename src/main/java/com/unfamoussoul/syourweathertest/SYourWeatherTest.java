@@ -18,12 +18,18 @@ public final class SYourWeatherTest extends JavaPlugin {
     @Override
     public void onEnable() {
         loadConfig();
+        loadListener();
     }
 
     private void loadConfig() {
         String ver = getPluginMeta().getVersion();
         cfgH.setup();
         cfg = new Config(cfgH, ver);
+    }
+
+    public void loadListener() {
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(new WeatherListener(this), this);
     }
 
     public Config getCfg() {
