@@ -18,7 +18,7 @@ public final class SYourWeatherTest extends JavaPlugin {
     @Override
     public void onEnable() {
         loadConfig();
-        loadListener();
+        registerListeners();
     }
 
     private void loadConfig() {
@@ -27,7 +27,7 @@ public final class SYourWeatherTest extends JavaPlugin {
         cfg = new Config(cfgH, ver);
     }
 
-    public void loadListener() {
+    public void registerListeners() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new WeatherListener(this), this);
     }
