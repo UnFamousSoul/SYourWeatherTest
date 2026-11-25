@@ -17,7 +17,7 @@ public final class Config {
     public final Component weatherReset;
     public final String errorInvalidWeather;
 
-    public Config(@NotNull ConfigHandler handler, String version) {
+    public Config(@NotNull ConfigHandler handler, @NotNull String version) {
         FileConfiguration cfg = handler.get();
 
         usage = mm("""

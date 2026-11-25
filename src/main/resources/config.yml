@@ -1,5 +1,4 @@
 reloaded: "<green>Успешно перезагружено!"
-no_permission: "<red>У вас нет прав."
 weather_set: "<green>Погода установлена на <weather>"
 weather_reset: "<green>Погода сброшена!"
 error_invalid_weather: "<weather> - неправильная погода!"

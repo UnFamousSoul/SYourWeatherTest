@@ -3,7 +3,7 @@ package com.unfamoussoul.syourweathertest.command.syourweathertest;
 import com.unfamoussoul.syourweathertest.SYourWeatherTest;
 import com.unfamoussoul.syourweathertest.command.Command;
 import com.unfamoussoul.syourweathertest.command.argument.WeatherTypeArgument;
-import com.unfamoussoul.syourweathertest.data.DataSaver;
+import com.unfamoussoul.syourweathertest.data.DataHandler;
 import io.papermc.paper.command.brigadier.Commands;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.WeatherType;
@@ -34,9 +34,16 @@ public final class SYourWeatherTestCommand extends Command {
                                     if (!(context.getSource().getSender() instanceof Player player)) return 0;
 
                                     WeatherType type = context.getArgument("type", WeatherType.class);
-                                    DataSaver ds = plugin.getDataSaver();
-                                    ds.save(player, type);
-                                    ds.apply(player, type);
+
+                                    player.getScheduler().run(
+                                            plugin,
+                                            _ -> {
+                                                DataHandler ds = plugin.getDataSaver();
+                                                ds.save(player, type);
+                                                ds.apply(player, type);
+                                                },
+                                            null
+                                    );
 
                                     return send(
                                             context,
@@ -51,9 +58,16 @@ public final class SYourWeatherTestCommand extends Command {
 
                             if (!(context.getSource().getSender() instanceof Player player)) return 0;
 
-                            DataSaver ds = plugin.getDataSaver();
-                            ds.save(player, null);
-                            ds.apply(player, null);
+
+                            player.getScheduler().run(
+                                    plugin,
+                                    _ -> {
+                                        DataHandler ds = plugin.getDataSaver();
+                                        ds.save(player, null);
+                                        ds.apply(player, null);
+                                    },
+                                    null
+                            );
 
                             return send(
                                     context,

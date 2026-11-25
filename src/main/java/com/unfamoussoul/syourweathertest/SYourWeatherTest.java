@@ -3,17 +3,20 @@ package com.unfamoussoul.syourweathertest;
 import com.unfamoussoul.syourweathertest.command.CommandHandler;
 import com.unfamoussoul.syourweathertest.config.Config;
 import com.unfamoussoul.syourweathertest.config.ConfigHandler;
-import com.unfamoussoul.syourweathertest.data.DataSaver;
+import com.unfamoussoul.syourweathertest.data.DataHandler;
 import com.unfamoussoul.syourweathertest.listener.WeatherListener;
+import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("unused")
 public final class SYourWeatherTest extends JavaPlugin {
 
     private final ConfigHandler cfgH = new ConfigHandler(this, "config.yml");
-    private final DataSaver ds = new DataSaver(this);
+    private final DataHandler ds = new DataHandler(this);
 
     private Config cfg;
 
@@ -30,22 +33,22 @@ public final class SYourWeatherTest extends JavaPlugin {
         cfg = new Config(cfgH, ver);
     }
 
-    public void registerListeners() {
+    private void registerListeners() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new WeatherListener(this), this);
     }
 
     private void registerCommands() {
-        var manager = getLifecycleManager();
+        LifecycleEventManager<@NotNull Plugin> manager = getLifecycleManager();
         CommandHandler commandHandler = new CommandHandler(this);
         manager.registerEventHandler(LifecycleEvents.COMMANDS, commandHandler::run);
     }
 
-    public Config getCfg() {
+    public @NotNull Config getCfg() {
         return cfg;
     }
 
-    public DataSaver getDataSaver() {
+    public @NotNull DataHandler getDataSaver() {
         return ds;
     }
 }

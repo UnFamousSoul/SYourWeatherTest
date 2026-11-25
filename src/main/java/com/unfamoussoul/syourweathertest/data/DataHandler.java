@@ -7,16 +7,17 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class DataSaver {
+public class DataHandler {
 
     private final NamespacedKey weatherKey;
 
-    public DataSaver(JavaPlugin plugin) {
+    public DataHandler(@NotNull JavaPlugin plugin) {
         weatherKey = new NamespacedKey(plugin, "weather");
     }
 
-    public WeatherType get(@NotNull Player player) {
+    public @Nullable WeatherType get(@NotNull Player player) {
         Integer value = player.getPersistentDataContainer().get(weatherKey, PersistentDataType.INTEGER);
         if (value == null) {
             return null;
@@ -24,7 +25,7 @@ public class DataSaver {
         return WeatherType.values()[value];
     }
 
-    public void save(@NotNull Player player, WeatherType option) {
+    public void save(@NotNull Player player, @Nullable WeatherType option) {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         if (option == null) {
             pdc.remove(weatherKey);
@@ -33,7 +34,7 @@ public class DataSaver {
         pdc.set(weatherKey, PersistentDataType.INTEGER, option.ordinal());
     }
 
-    public void apply(@NotNull Player player, WeatherType type) {
+    public void apply(@NotNull Player player, @Nullable WeatherType type) {
         if (type == null) {
             player.resetPlayerWeather();
             return;

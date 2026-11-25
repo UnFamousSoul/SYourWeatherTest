@@ -2,7 +2,7 @@ package com.unfamoussoul.syourweathertest.listener;
 
 
 import com.unfamoussoul.syourweathertest.SYourWeatherTest;
-import com.unfamoussoul.syourweathertest.data.DataSaver;
+import com.unfamoussoul.syourweathertest.data.DataHandler;
 import org.bukkit.WeatherType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,9 +14,17 @@ public record WeatherListener(SYourWeatherTest plugin) implements Listener {
 
     @EventHandler
     private void onJoin(@NotNull PlayerJoinEvent event) {
-        DataSaver ds = plugin.getDataSaver();
+
         Player player = event.getPlayer();
-        WeatherType type = ds.get(player);
-        ds.apply(player, type);
+
+        player.getScheduler().run(
+                plugin,
+                _ -> {
+                    DataHandler ds = plugin.getDataSaver();
+                    WeatherType type = ds.get(player);
+                    ds.apply(player, type);
+                },
+                null
+        );
     }
 }
