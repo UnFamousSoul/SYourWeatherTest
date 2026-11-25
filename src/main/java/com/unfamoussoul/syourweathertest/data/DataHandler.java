@@ -19,10 +19,11 @@ public class DataHandler {
 
     public @Nullable WeatherType get(@NotNull Player player) {
         Integer value = player.getPersistentDataContainer().get(weatherKey, PersistentDataType.INTEGER);
-        if (value == null) {
-            return null;
-        }
-        return WeatherType.values()[value];
+        if (value == null) return null;
+
+        WeatherType[] all = WeatherType.values();
+        if (value < 0 || value >= all.length) return null;
+        return all[value];
     }
 
     public void save(@NotNull Player player, @Nullable WeatherType option) {
