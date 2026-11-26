@@ -4,6 +4,7 @@ import com.unfamoussoul.syourweathertest.command.CommandHandler;
 import com.unfamoussoul.syourweathertest.config.Config;
 import com.unfamoussoul.syourweathertest.config.ConfigHandler;
 import com.unfamoussoul.syourweathertest.data.DataHandler;
+import com.unfamoussoul.syourweathertest.listener.TridentListener;
 import com.unfamoussoul.syourweathertest.listener.WeatherListener;
 import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
@@ -36,6 +37,7 @@ public final class SYourWeatherTest extends JavaPlugin {
     private void registerListeners() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new WeatherListener(this), this);
+        pm.registerEvents(new TridentListener(this), this);
     }
 
     private void registerCommands() {
